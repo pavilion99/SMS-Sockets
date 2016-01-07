@@ -16,6 +16,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SMSProtocol extends Thread {
 
@@ -89,6 +91,9 @@ public class SMSProtocol extends Thread {
                                         int to = (int)j.get("to");
                                         String content = (String)j.get("content");
                                         if(SMSocket.openClients.contains(to)) {
+                                            if(Message.messages.containsKey(to)) {
+                                                Message.messages.put(to, new ArrayList<Message>());
+                                            }
                                             Message.messages.put(to, new Message(this.id, to, content));
                                         }
                                         this.conn.insertMessage(this.id, to, content);
@@ -101,9 +106,16 @@ public class SMSProtocol extends Thread {
                                 System.out.println("Client at " + s.getRemoteSocketAddress() + " disconnected.");
                                 return;
                             case RECEIVE:
-                                for(;;) {
-                                    if(Message.)
+                                while(true) {
+                                    if(Message.messages.containsKey(this.id)) {
+                                        if(Message.messages.get(this.id).size() != 0) {
+                                            for(Message m : Message.messages.get(this.id)) {
+
+                                            }
+                                        }
+                                    }
                                 }
+                                return;
                         }
                     default:
                         output = "ERR";

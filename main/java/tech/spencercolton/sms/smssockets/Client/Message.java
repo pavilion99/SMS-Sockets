@@ -1,10 +1,11 @@
 package tech.spencercolton.sms.smssockets.Client;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Message {
 
-    public static HashMap<Integer, Message> messages = new HashMap<>();
+    public static HashMap<Integer, List<Message>> messages = new HashMap<>();
 
     private int from;
     private int to;
