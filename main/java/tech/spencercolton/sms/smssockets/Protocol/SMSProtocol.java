@@ -1,6 +1,5 @@
 package tech.spencercolton.sms.smssockets.Protocol;
 
-import com.oracle.javafx.jmx.json.JSONException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -34,7 +33,7 @@ public class SMSProtocol extends Thread {
                 BufferedReader in = new BufferedReader(new InputStreamReader(this.s.getInputStream()));
                 ) {
 
-            String input = null, output = null;
+            String input = null, output  = null;
 
             do {
                 switch(state) {
